@@ -79,6 +79,68 @@ public class GsonUtils {
         return true;
     }
 
+    public static boolean isJsonElementEqualsWithoutSomeJsonArrayOrder(String x, String y, List<String> keys){
+        return isJsonElementEqualsWithoutSomeJsonArrayOrder(gson.fromJson(x,JsonElement.class),gson.fromJson(y,JsonElement.class),keys);
+    }
+
+    public static boolean isJsonElementEqualsWithoutSomeJsonArrayOrder(JsonElement x, JsonElement y, List<String> keys) {
+        if (x.isJsonNull() && y.isJsonNull()) {
+            return true;
+        } else if (x.isJsonArray()&&y.isJsonArray()) {
+            JsonArray xArray = x.getAsJsonArray();
+            JsonArray yArray = y.getAsJsonArray();
+
+            if (xArray.size()==yArray.size()) {
+                for (int i = 0; i < xArray.size(); i++) {
+                    boolean flag = isJsonElementEqualsWithJsonArrayOrder(xArray.get(i),yArray.get(i));
+
+                    if (!flag) {
+                        return false;
+                    }
+                }
+            } else {
+                return false;
+            }
+
+        }
+        else if (x.isJsonObject() && y.isJsonObject()) {
+            Set<Map.Entry<String, JsonElement>> xSet = x.getAsJsonObject().entrySet();
+            Set<Map.Entry<String, JsonElement>> ySet = y.getAsJsonObject().entrySet();
+
+            if (xSet.size()==ySet.size()) {
+                for (Map.Entry<String, JsonElement> xEntry : xSet) {
+                    boolean flag = false;
+
+                    for (Map.Entry<String, JsonElement> yEntry : ySet) {
+                        if (xEntry.getKey().equals(yEntry.getKey())&&!keys.contains(xEntry.getKey())){
+                            if (isJsonElementEqualsWithJsonArrayOrder(xEntry.getValue(),yEntry.getValue())) {
+                                flag = true;
+                                break;
+                            }
+                        } else if (xEntry.getKey().equals(yEntry.getKey())&&keys.contains(xEntry.getKey())) {
+                            flag = isJsonElementEqualsWithoutJsonArrayOrder(xEntry.getValue(), yEntry.getValue());
+                        }
+                    }
+
+
+
+                    if (!flag) {
+                        return false;
+                    }
+                }
+            } else {
+                return false;
+            }
+        }
+        else if (x.isJsonPrimitive() && y.isJsonPrimitive()) {
+            return x.getAsJsonPrimitive().equals(y.getAsJsonPrimitive());
+        } else {
+            return false;
+        }
+        return true;
+
+    }
+
     public static boolean isJsonElementEqualsWithoutJsonArrayOrder(String x, String y) {
         return isJsonElementEqualsWithoutJsonArrayOrder(gson.fromJson(x,JsonElement.class), gson.fromJson(y,JsonElement.class));
     }
