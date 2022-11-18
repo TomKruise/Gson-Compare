@@ -11,11 +11,6 @@ public class TestGsonUtils {
     String s1 = "{\"name\":\"Tom\", \"age\":18}";
     String s2 = "{\"name\":\"Tom\", \"age\":19}";
 
-    String order1 = "{\"name\":\"Tom\", \"age\":18, \"order\":[1,2,3], \"noOrder\":[1,2,3,4]}";
-    String order2 = "{\"name\":\"Tom\", \"age\":18, \"order\":[2,3,1], \"noOrder\":[2,3,4,1]}";
-
-    String order3 = "{\"name\":\"Tom\", \"age\":18, \"order\":[1,2,3], \"noOrder\":[1,2,3,4]}";
-    String order4 = "{\"name\":\"Tom\", \"age\":18, \"order\":[1,2,3], \"noOrder\":[2,3,4,1]}";
     @Test
     public void testIsJsonElementEqualsWithoutJsonArrayOrder(){
         Assert.assertTrue(isJsonElementEqualsWithoutJsonArrayOrder(s1,s1));
@@ -28,6 +23,9 @@ public class TestGsonUtils {
         Assert.assertFalse(isJsonElementEqualsWithJsonArrayOrder(s1,s2));
     }
 
+    String order1 = "{\"name\":\"Tom\", \"age\":18, \"order\":[1,2,3], \"noOrder\":[1,2,3,4]}";
+    String order2 = "{\"name\":\"Tom\", \"age\":18, \"order\":[2,3,1], \"noOrder\":[2,3,4,1]}";
+
     @Test
     public void testIsJsonElementEqualsWithSomeJsonArrayOrder(){
         Assert.assertTrue(isJsonElementEqualsWithSomeJsonArrayOrder(order1, order1, Arrays.asList(new String[]{"order"})));
@@ -35,9 +33,21 @@ public class TestGsonUtils {
 
     }
 
+    String order3 = "{\"name\":\"Tom\", \"age\":18, \"order\":[1,2,3], \"noOrder\":[1,2,3,4]}";
+    String order4 = "{\"name\":\"Tom\", \"age\":18, \"order\":[1,2,3], \"noOrder\":[2,3,4,1]}";
+
     @Test
     public void testIsJsonElementEqualsWithoutSomeJsonArrayOrder(){
         Assert.assertTrue(isJsonElementEqualsWithoutSomeJsonArrayOrder(order3, order3, Arrays.asList(new String[]{"noOrder"})));
         Assert.assertFalse(isJsonElementEqualsWithoutSomeJsonArrayOrder(order3, order4, Arrays.asList(new String[]{"order"})));
+    }
+
+    String order5 = "{\"name\":\"Tom\", \"age\":18, \"order\":[1,2,3], \"noOrder\":[1,2,3,4]}";
+    String order6 = "{\"name\":\"Jerry\", \"age\":18, \"order\":[1,2,3], \"noOrder\":[1,2,3,4]}";
+
+    @Test
+    public void testIsJsonElementEqualsWithJsonArrayOrderAndSkipSomeKeys() {
+        Assert.assertTrue(isJsonElementEqualsWithJsonArrayOrderAndSkipSomeKeys(order5,order6,Arrays.asList(new String[] {"name"})));
+        Assert.assertFalse(isJsonElementEqualsWithJsonArrayOrderAndSkipSomeKeys(order5,order6,null));
     }
 }
