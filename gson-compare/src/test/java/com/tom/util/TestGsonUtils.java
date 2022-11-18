@@ -50,4 +50,13 @@ public class TestGsonUtils {
         Assert.assertTrue(isJsonElementEqualsWithJsonArrayOrderAndSkipSomeKeys(order5,order6,Arrays.asList(new String[] {"name"})));
         Assert.assertFalse(isJsonElementEqualsWithJsonArrayOrderAndSkipSomeKeys(order5,order6,null));
     }
+
+    String order7 = "{\"name\":\"Tom\", \"age\":18, \"order\":[1,2,3], \"noOrder\":[1,2,3,4]}";
+    String order8 = "{\"name\":\"Jerry\", \"age\":18, \"order\":[1,2,3], \"noOrder\":[2,3,4,1]}";
+
+    @Test
+    public void testIsJsonElementEqualsWithoutJsonArrayOrderAndSkipSomeKeys() {
+        Assert.assertTrue(isJsonElementEqualsWithoutJsonArrayOrderAndSkipSomeKeys(order7,order8,Arrays.asList(new String[] {"name"})));
+        Assert.assertFalse(isJsonElementEqualsWithoutJsonArrayOrderAndSkipSomeKeys(order7,order8,null));
+    }
 }
