@@ -31,7 +31,7 @@ public class GsonUtils {
      * @return
      */
     public static boolean isJsonElementEqualsWithoutJsonArrayOrder(JsonElement x, JsonElement y) {
-        if (x.isJsonNull() && y.isJsonNull()) {//TODO Done
+        if (x.isJsonNull() && y.isJsonNull()) {
             return true;
         } else if (x.isJsonArray() && y.isJsonArray()) {
             JsonArray xArray = x.getAsJsonArray();
@@ -112,7 +112,7 @@ public class GsonUtils {
      * @return
      */
     public static boolean isJsonElementEqualsWithoutJsonArrayOrderAndSkipSomeKeys(JsonElement x, JsonElement y, List<String> skipKeys) {
-        if (null == skipKeys || skipKeys.size() == 0) {//TODO Done
+        if (null == skipKeys || skipKeys.size() == 0) {
             return isJsonElementEqualsWithoutJsonArrayOrder(x, y);
         }
         if (x.isJsonNull() && y.isJsonNull()) {
@@ -200,7 +200,7 @@ public class GsonUtils {
      * @return
      */
     public static boolean isJsonElementEqualsWithoutJsonArrayOrderAndWithSomeJsonArrayOrder(JsonElement x, JsonElement y, List<String> keys) {
-        if (null == keys || keys.size() == 0) {//TODO Done
+        if (null == keys || keys.size() == 0) {
             return isJsonElementEqualsWithoutJsonArrayOrder(x, y);
         }
         if (x.isJsonNull() && y.isJsonNull()) {
@@ -289,7 +289,7 @@ public class GsonUtils {
      * @return
      */
     public static boolean isJsonElementEqualsWithoutJsonArrayOrderAndWithSomeJsonArrayOrderAndSkipSomeKeys(JsonElement x, JsonElement y, List<String> withArrayKeys, List<String> skipKeys) {
-        if (null == withArrayKeys || withArrayKeys.size() == 0) {//TODO Done
+        if (null == withArrayKeys || withArrayKeys.size() == 0) {
             return isJsonElementEqualsWithoutJsonArrayOrderAndSkipSomeKeys(x, y,skipKeys);
         }
         if (null == skipKeys || skipKeys.size() == 0) {
@@ -403,7 +403,7 @@ public class GsonUtils {
      * @return
      */
     public static boolean isJsonElementEqualsWithJsonArrayOrder(JsonElement x, JsonElement y) {
-        if (x.isJsonNull() && y.isJsonNull()) {//TODO Done
+        if (x.isJsonNull() && y.isJsonNull()) {
             return true;
         } else if (x.isJsonArray() && y.isJsonArray()) {
             JsonArray xArray = x.getAsJsonArray();
@@ -480,7 +480,7 @@ public class GsonUtils {
      * @return
      */
     public static boolean isJsonElementEqualsWithJsonArrayOrderAndWithoutSomeJsonArrayOrder(JsonElement x, JsonElement y, List<String> keys) {
-        if (null == keys || keys.size() == 0) {//TODO Done
+        if (null == keys || keys.size() == 0) {
             return isJsonElementEqualsWithJsonArrayOrder(x, y);
         }
         if (x.isJsonNull() && y.isJsonNull()) {
@@ -572,7 +572,7 @@ public class GsonUtils {
      * @return
      */
     public static boolean isJsonElementEqualsWithJsonArrayOrderAndSkipSomeKeys(JsonElement x, JsonElement y, List<String> skipKeys) {
-        if (null == skipKeys || skipKeys.size() == 0) {//TODO Done
+        if (null == skipKeys || skipKeys.size() == 0) {
             return isJsonElementEqualsWithJsonArrayOrder(x, y);
         }
 
@@ -660,7 +660,7 @@ public class GsonUtils {
      * @return
      */
     public static boolean isJsonElementEqualsWithJsonArrayOrderAndWithoutSomeJsonArrayOrderAndSkipSomeKeys(JsonElement x, JsonElement y, List<String> withoutArrayKeys, List<String> skipKeys) {
-        if (null == skipKeys || skipKeys.size() == 0) {//TODO Done
+        if (null == skipKeys || skipKeys.size() == 0) {
             return isJsonElementEqualsWithJsonArrayOrderAndWithoutSomeJsonArrayOrder(x, y, withoutArrayKeys);
         } else if (null == withoutArrayKeys || withoutArrayKeys.size() == 0) {
             return isJsonElementEqualsWithJsonArrayOrderAndSkipSomeKeys(x, y, skipKeys);
