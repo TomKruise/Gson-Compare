@@ -9,7 +9,7 @@ import static com.tom.util.GsonUtils.*;
 
 public class TestGsonUtils {
     String s1 = "{\"name\":\"Tom\", \"noOrder\":[1,2,3,4]}";
-    String s11 = "{\"name\":\"Tom\", \"noOrder\":[2,3,4,1]}";
+    String s11 = "{\"name\":\"Tom\", \"noOrder\":[1,2,3,4]}";
     String s2 = "{\"name\":\"Tom\", \"noOrder\":[3,4,1,2]}";
     String s22 = "{\"name\":\"Jerry\", \"noOrder\":[3,4,1,2]}";
 
