@@ -1,6 +1,19 @@
 # Gson-Compare
 Compare Two JSON Objects with Json
 
+##Depoly
+```shell
+mvn clean deploy -P release
+```
+###Maven
+```xml
+    <dependency>
+        <groupId>io.github.tomkruise</groupId>
+        <artifactId>gson-compare</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+```
+####Example
 ```java
 import org.junit.Assert;
 import org.junit.Test;

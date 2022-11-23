@@ -1,4 +1,4 @@
-package com.tom.util;
+package io.github.tomkruise.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -6,11 +6,11 @@
 
     <parent>
         <artifactId>Gson-Compare</artifactId>
-        <groupId>com.tom</groupId>
+        <groupId>io.github.tomkruise</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.tom.util</groupId>
+    <groupId>io.github.tomkruise</groupId>
     <artifactId>gson-compare</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
